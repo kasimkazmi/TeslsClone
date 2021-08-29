@@ -1,19 +1,21 @@
 import React from "react";
 import CarItem from "../CarItem";
-import Cars from "./cars";
+import cars from "./cars";
 import { Dimensions, FlatList, View } from "react-native";
 import styles from "./styles";
 
-const CarsList = () => {
+const CarsList = (props) => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={Cars}
-        renderItem={({ item }) => <CarItem id={item.id} car={item} />}
+        data={cars}
+        renderItem={({ item }) => <CarItem car={item} />}
+        showsVerticalScrollIndicator={false}
         snapToAlignment={"start"}
         decelerationRate={"fast"}
         snapToInterval={Dimensions.get("window").height}
-        showsVerticalScrollIndicator={false}
+        keyExtractor={(item)=>item.id}
+       
       />
     </View>
   );
